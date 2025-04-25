@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lista de Compras</h1>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+        
+        <div class="add-item">
+            <input type="text" id="item-input" placeholder="Adicionar item...">
+            <div class="quantity-unit-container">
+                <input type="number" id="quantity-input" value="1" min="0.1" step="0.1">
+                <select id="unit-select">
+                    <option value="Un">Un</option>
+                    <option value="Kilo">Kilo</option>
+                    <option value="Litro">Litro</option>
+                </select>
+            </div>
+            <div class="price-input-container">
+                <span class="currency-symbol">R$</span>
+                <input type="number" id="price-input" placeholder="0,00" step="0.01" min="0">
+            </div>
+            <select id="category-select">
+                <option value="geral">Geral</option>
+                <option value="frutas">Frutas e Vegetais</option>
+                <option value="laticínios">Laticínios</option>
+                <option value="padaria">Padaria</option>
+                <option value="carnes">Carnes</option>
+                <option value="congelados">Congelados</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="limpeza">Limpeza</option>
+                <option value="higiene">Higiene</option>
+            </select>
+            <button id="add-button">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+        
+        <div class="filter-container">
+            <div class="filter-options">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="pending">Pendentes</button>
+                <button class="filter-btn" data-filter="completed">Comprados</button>
+            </div>
+            <button id="clear-completed">Limpar Comprados</button>
+        </div>
+        
+        <div class="shopping-list" id="shopping-list">
+            <!-- Os itens da lista serão adicionados aqui dinamicamente -->
+        </div>
+        
+        <div class="summary">
+            <p>Total: <span id="total-items">0</span> itens</p>
+            <p>Comprados: <span id="completed-items">0</span> itens</p>
+            <p>Valor Total: R$ <span id="total-price">0,00</span></p>
+        </div>
+    </div>
+    
+    <!-- Modal para edição de itens -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Editar Item</h2>
+            <div class="edit-form">
+                <div class="form-group">
+                    <label for="edit-item-input">Item:</label>
+                    <input type="text" id="edit-item-input">
+                </div>
+                <div class="form-group">
+                    <label for="edit-quantity-input">Quantidade:</label>
+                    <input type="number" id="edit-quantity-input" min="0.1" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="edit-unit-select">Unidade:</label>
+                    <select id="edit-unit-select">
+                        <option value="Un">Un</option>
+                        <option value="Kilo">Kilo</option>
+                        <option value="Litro">Litro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-price-input">Preço (R$):</label>
+                    <input type="number" id="edit-price-input" step="0.01" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="edit-category-select">Categoria:</label>
+                    <select id="edit-category-select">
+                        <option value="geral">Geral</option>
+                        <option value="frutas">Frutas e Vegetais</option>
+                        <option value="laticínios">Laticínios</option>
+                        <option value="padaria">Padaria</option>
+                        <option value="carnes">Carnes</option>
+                        <option value="congelados">Congelados</option>
+                        <option value="bebidas">Bebidas</option>
+                        <option value="limpeza">Limpeza</option>
+                        <option value="higiene">Higiene</option>
+                    </select>
+                </div>
+                <button id="save-edit-button">Salvar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
